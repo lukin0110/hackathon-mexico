@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.ktconexiones.flow.android"
+          android:versionCode="1"
+          android:versionName="Taylor">
+
+    <uses-sdk minSdkVersion="6" />
+
+    <!--
+       Required user permissions to run the application
+       doc: http://developer.android.com/reference/android/Manifest.permission.html
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+
+    <application android:icon="@drawable/iconflow"
+                 android:label="@string/app_name"
+                 android:description="@string/app_description"
+                 android:name=".app.FlowApplication"
+                 android:debuggable="true">
+
+        <activity android:name=".activity.HomeActivity" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ShareActivity" android:theme="@android:style/Theme.NoTitleBar">
+            <!--
+               This intent-filter ensures that we'll appear in the share menu's of the Gallery and Camera app
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.tabs.FlowActivity" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name=".activity.tabs.FriendsActivity"/>
+        <activity android:name=".activity.tabs.BananaActivity"/>
+        <activity android:name=".activity.PreferencesActivity"/>
+        <activity android:name=".activity.FriendFlowActivity" android:theme="@android:style/Theme.NoTitleBar" />
+
+
+        <service android:name=".app.UploadService">
+            <!-- This 'key' is needed to start to service via <context>.startService(Intent intent); -->
+            <intent-filter>
+                <action android:name="com.ktconexiones.flow.android.UPLOAD_SERVICE" />
+            </intent-filter>
+        </service>
+
+    </application>
+    
+</manifest>
+
+
+
+        

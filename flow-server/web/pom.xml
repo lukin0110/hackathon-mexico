@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.ktconexiones.flow.server</groupId>
+        <artifactId>server</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ktconexiones.flow.server</groupId>
+    <artifactId>web</artifactId>
+    <packaging>war</packaging>
+    <version>1.0</version>
+    <name>Flow web (war)</name>
+    <url>http://www.ktconexiones.com/</url>
+
+    <build>
+        <directory>target/${target.dir}</directory>      
+        <finalName>flow</finalName>
+
+        <resources>
+
+            <resource>
+                <filtering>true</filtering>
+                <targetPath>.</targetPath>
+                <directory>src/main/resources/</directory>
+                <includes>
+                    <include>applicationContext.xml</include>
+                </includes>
+            </resource>
+
+            <resource>
+                <filtering>true</filtering>
+                <targetPath>../${project.build.finalName}/WEB-INF/</targetPath>
+                <directory>src/main/resources/</directory>
+                <includes>
+                    <include>dispatcher-servlet.xml</include>
+                    <include>log4j.properties</include>
+                </includes>
+            </resource>
+
+        </resources>
+
+        <filters>
+            <filter>src/main/resources/default.properties</filter>
+            <filter>src/main/resources/${application.config.override}</filter>
+        </filters>
+        
+    </build>
+
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.ktconexiones.flow.server</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- JSTL and taglibs -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
+
+

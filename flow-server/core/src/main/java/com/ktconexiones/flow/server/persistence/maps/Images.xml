@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Images">
+
+    <typeAlias alias="Image" type="com.ktconexiones.flow.server.domain.Image" />
+
+    <resultMap id="resultMap" class="Image">
+        <result property="id" column="Id" />
+        <result property="latitude" column="Latitude" />
+        <result property="longitude" column="Longitude" />
+        <result property="name" column="Name" />
+        <result property="mimeType" column="MimeType" />
+        <result property="created" column="Created" />
+        <result property="updated" column="Updated" />
+    </resultMap>
+
+    
+    <select id="getById" parameterClass="int" resultMap="resultMap">
+        SELECT *
+        FROM Images
+        WHERE Id = #value#
+    </select>
+
+
+    <select id="all" resultMap="resultMap">
+        SELECT *
+        FROM Images
+        ORDER BY Created DESC
+    </select>
+
+
+
+    <insert id="insert" parameterClass="Image">
+        INSERT INTO Images (Latitude, Longitude, Name, Created)
+        VALUES (#latitude#, #longitude#, #name#, #created#)
+
+        <selectKey keyProperty="id" type="post" resultClass="int">
+           SELECT @@IDENTITY AS value
+        </selectKey>
+    </insert>
+
+</sqlMap>
+        
+
+
+
+<!--
+Id
+Latitude
+Longitude
+Path
+Created
+Updated
+
+    private double latitude, longitude, altitude;
+    private int id;
+    private String path;
+
+
+-->

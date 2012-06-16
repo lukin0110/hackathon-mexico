@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<item android:id="@+id/menu_sync"
+          android:icon="@android:drawable/ic_popup_sync"
+          android:title="@string/menu_sync" />-->
+
+    <item android:id="@+id/menu_upload"
+          android:icon="@android:drawable/ic_menu_share"
+          android:title="@string/common_upload" />
+
+    <!--<item android:id="@+id/menu_leave"
+          android:icon="@android:drawable/ic_lock_power_off"
+          android:title="@string/menu_leave" />-->
+
+    <item android:id="@+id/menu_preferences"
+          android:icon="@android:drawable/ic_menu_preferences"
+          android:title="@string/menu_pref" />
+
+</menu>

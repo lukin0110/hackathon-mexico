@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:annotation-config />
+
+    <!-- Configure the multipart resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes
+            20 MB = 20971520 bytes
+        -->
+        <property name="maxUploadSize" value="20971520" />
+    </bean>
+
+    
+    <!-- TODO: move it to property files -->
+    <bean id="configuration" class="com.ktconexiones.flow.server.domain.Configuration">
+        <property name="uploadPath" value="c:\temp\flow\upload\" />
+        <property name="openApiServer" value="http://cpmex.openapiservice.com/v1.0" />
+        <property name="openApiAppKey" value="849df0f3c5b306ecf29a147f" />
+
+        <property name="root" value="http://201.166.131.163:8080/flow" />
+        <property name="staticRoot" value="http://201.166.131.163" />
+    </bean>
+
+
+
+    
+
+    <!-- defining datasource & configuration mybatis -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver" />
+        <property name="url" value="jdbc:jtds:sqlserver://localhost/CampusPartyFlow" />
+        <property name="username" value="flow" />
+        <property name="password" value="flow" />
+
+        <property name="initialSize" value="5" />
+        <property name="maxActive" value="10" />
+        <property name="maxIdle" value="5"/>
+        <property name="maxWait" value="15000"/>
+
+        <property name="poolPreparedStatements" value="true" />
+        <property name="validationQuery" value="select 1 " />
+        <property name="testOnBorrow" value="true" />
+
+        <property name="removeAbandoned" value="true" />
+        <property name="removeAbandonedTimeout" value="120" />
+        <property name="logAbandoned" value="true" />
+    </bean>
+
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocation">
+            <value>classpath:/com/ktconexiones/flow/server/persistence/maps/SqlMapConfig.xml</value>
+        </property>
+        <property name="dataSource"><ref bean="dataSource" /></property>
+        <property name="useTransactionAwareDataSource" value="true" />
+    </bean>
+
+    <bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+    </bean>
+
+
+    <bean id="beanNewProductInstanceDao" class="com.ktconexiones.flow.server.persistence.SqlMapImageDao">
+        <property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+    </bean>
+
+
+
+</beans>

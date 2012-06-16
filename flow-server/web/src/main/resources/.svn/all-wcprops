@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/devtivity/ktconexiones/svn/!svn/ver/13/Websites/flow/flow-server/web/src/main/resources
+END
+default.properties
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/devtivity/ktconexiones/svn/!svn/ver/13/Websites/flow/flow-server/web/src/main/resources/default.properties
+END
+prod.properties
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/devtivity/ktconexiones/svn/!svn/ver/13/Websites/flow/flow-server/web/src/main/resources/prod.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/devtivity/ktconexiones/svn/!svn/ver/22/Websites/flow/flow-server/web/src/main/resources/applicationContext.xml
+END
+dispatcher-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/devtivity/ktconexiones/svn/!svn/ver/13/Websites/flow/flow-server/web/src/main/resources/dispatcher-servlet.xml
+END
+dev.properties
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/devtivity/ktconexiones/svn/!svn/ver/13/Websites/flow/flow-server/web/src/main/resources/dev.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/devtivity/ktconexiones/svn/!svn/ver/13/Websites/flow/flow-server/web/src/main/resources/log4j.properties
+END
